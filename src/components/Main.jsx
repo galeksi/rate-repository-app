@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, StatusBar } from "react-native";
 import { Route, Routes, Navigate } from "react-router-native";
 
 import RepositoryList from "./RepositoryList";
@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
 const Main = () => {
   return (
     <View style={styles.container}>
+      <StatusBar />
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} exact />
