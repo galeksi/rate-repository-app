@@ -5,11 +5,11 @@ const useSignIn = () => {
   const [mutate, result] = useMutation(USER_SIGNIN);
 
   const signIn = async ({ username, password }) => {
-    await mutate({
+    const data = await mutate({
       variables: { credentials: { username, password } },
     });
-    console.log(result.data.authenticate.accessToken);
-    return result.data;
+    // console.log(data.data.authenticate.accessToken);
+    return data;
   };
 
   return [signIn, result];
