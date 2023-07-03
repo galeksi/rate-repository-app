@@ -21,3 +21,11 @@ export const USER_SIGNIN = gql`
     }
   }
 `;
+
+export const USER_SIGNOUT = gql`
+  query Me {
+    me {
+      username
+    }
+  }
+`;

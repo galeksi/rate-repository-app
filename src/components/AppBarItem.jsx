@@ -3,9 +3,9 @@ import { Link } from "react-router-native";
 // import theme from "../theme";
 import Text from "./Text";
 
-const AppBarItem = ({ link, name }) => {
+const AppBarItem = ({ link, name, styling }) => {
   return (
-    <Pressable style={{ paddingHorizontal: 10, paddingVertical: 15 }}>
+    <Pressable style={styling}>
       <Link to={link}>
         <Text
           fontWeight="bold"
