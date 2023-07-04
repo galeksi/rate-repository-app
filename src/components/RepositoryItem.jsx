@@ -56,7 +56,7 @@ const RepositoryItem = ({ item }) => {
   };
 
   return (
-    <View style={styles.card}>
+    <View testID="repositoryItem" style={styles.card}>
       <View style={styles.flexContainerTop}>
         <Image style={styles.image} source={{ uri: item.ownerAvatarUrl }} />
         <View style={styles.itemTop}>

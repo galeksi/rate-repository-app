@@ -33,20 +33,25 @@ const AppBar = () => {
     console.log(data);
   };
 
-  const user = data.me ? (
-    <Pressable style={styles.pressable} onPress={logOut}>
-      <Text fontWeight="bold" fontSize="subheading" style={{ color: "white" }}>
-        Sign out
-      </Text>
-    </Pressable>
-  ) : (
-    <AppBarItem
-      style={styles.item}
-      link="/signin"
-      name="Sign in"
-      styling={styles.pressable}
-    />
-  );
+  const user =
+    data && data.me ? (
+      <Pressable style={styles.pressable} onPress={logOut}>
+        <Text
+          fontWeight="bold"
+          fontSize="subheading"
+          style={{ color: "white" }}
+        >
+          Sign out
+        </Text>
+      </Pressable>
+    ) : (
+      <AppBarItem
+        style={styles.item}
+        link="/signin"
+        name="Sign in"
+        styling={styles.pressable}
+      />
+    );
 
   return (
     <View style={styles.container}>
