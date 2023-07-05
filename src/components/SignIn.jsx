@@ -31,21 +31,33 @@ const validationSchema = yup.object().shape({
   password: yup.string().required("Password is required"),
 });
 
-const SignInForm = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit }) => {
   return (
-    <View>
-      <FormikTextInput name="username" placeholder="username" />
-      <FormikTextInput name="password" placeholder="password" secureTextEntry />
-      <Pressable style={styles.btnPrimary} onPress={onSubmit}>
-        <Text
-          fontSize="subheading"
-          fontWeight="bold"
-          style={styles.btnPrimaryText}
-        >
-          Sign in
-        </Text>
-      </Pressable>
-    </View>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={validationSchema}
+    >
+      {({ handleSubmit }) => (
+        <View>
+          <FormikTextInput name="username" placeholder="username" />
+          <FormikTextInput
+            name="password"
+            placeholder="password"
+            secureTextEntry
+          />
+          <Pressable style={styles.btnPrimary} onPress={handleSubmit}>
+            <Text
+              fontSize="subheading"
+              fontWeight="bold"
+              style={styles.btnPrimaryText}
+            >
+              Sign in
+            </Text>
+          </Pressable>
+        </View>
+      )}
+    </Formik>
   );
 };
 
@@ -57,23 +69,14 @@ const SignIn = () => {
     const { username, password } = values;
 
     try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
+      await signIn({ username, password });
       navigate("/");
     } catch (e) {
       console.log(e);
     }
   };
 
-  return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}
-    >
-      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
-    </Formik>
-  );
+  return <SignInForm onSubmit={onSubmit} />;
 };
 
 export default SignIn;

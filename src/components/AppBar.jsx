@@ -27,10 +27,8 @@ const AppBar = () => {
   const { data } = useQuery(USER_SIGNOUT);
 
   const logOut = async () => {
-    console.log("pressed");
     await authStorage.removeAccessToken();
     apolloClient.resetStore();
-    console.log(data);
   };
 
   const user =

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 const RepositoryItem = ({ item }) => {
   const parsedNumber = (number) => {
     const component =
-      item.stargazersCount >= 1000 ? (
+      number >= 1000 ? (
         <Text fontWeight="bold">{(number / 1000).toFixed(1)}k</Text>
       ) : (
         <Text fontWeight="bold">{number}</Text>
