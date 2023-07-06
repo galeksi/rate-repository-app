@@ -17,13 +17,13 @@ const RepositoryView = () => {
   const { id } = useParams();
 
   const { data, loading } = useQuery(GET_SINGLE_REPOSITORY, {
+    fetchPolicy: "cache-and-network",
     variables: { repositoryId: id },
   });
 
   if (loading) {
     return <Text>Loading...</Text>;
   }
-  console.log(data);
 
   const reviews = data.repository.reviews.edges
     ? data.repository.reviews.edges.map((edge) => edge.node)
