@@ -10,5 +10,6 @@ export const REPOSITORY_NODE_FRAGMENT = gql`
     reviewCount
     stargazersCount
     ownerAvatarUrl
+    url
   }
 `;

@@ -7,8 +7,18 @@ export const GET_REPOSITORIES = gql`
       edges {
         node {
           ...RepositoryNodeFragment
+          id
         }
       }
+    }
+  }
+  ${REPOSITORY_NODE_FRAGMENT}
+`;
+
+export const GET_SINGLE_REPOSITORY = gql`
+  query ($repositoryId: ID!) {
+    repository(id: $repositoryId) {
+      ...RepositoryNodeFragment
     }
   }
   ${REPOSITORY_NODE_FRAGMENT}

@@ -1,5 +1,7 @@
 import { View, StyleSheet, Image } from "react-native";
+import * as Linking from "expo-linking";
 import Text from "./Text";
+import ButtonPrimary from "./ButtonPrimary";
 import theme from "../theme";
 
 const styles = StyleSheet.create({
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, githubLink }) => {
   const parsedNumber = (number) => {
     const component =
       number >= 1000 ? (
@@ -91,6 +93,14 @@ const RepositoryItem = ({ item }) => {
           <Text color="textSecondary">Rating</Text>
         </View>
       </View>
+      {githubLink ? (
+        <ButtonPrimary
+          text="Open in GitHub"
+          handlePress={() => Linking.openURL(item.url)}
+        />
+      ) : (
+        <></>
+      )}
     </View>
   );
 };

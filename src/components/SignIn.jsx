@@ -1,25 +1,10 @@
-import { Pressable, View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import { useNavigate } from "react-router-native";
 import { Formik } from "formik";
 import * as yup from "yup";
-import Text from "./Text";
 import FormikTextInput from "./FormikTextInput";
-import theme from "../theme";
+import ButtonPrimary from "./ButtonPrimary";
 import useSignIn from "../hooks/useSignIn";
-
-const styles = StyleSheet.create({
-  btnPrimary: {
-    flexGrow: 1,
-    padding: 15,
-    margin: 10,
-    backgroundColor: theme.colors.primary,
-    borderRadius: 5,
-  },
-  btnPrimaryText: {
-    color: "white",
-    textAlign: "center",
-  },
-});
 
 const initialValues = {
   username: "",
@@ -46,15 +31,7 @@ export const SignInForm = ({ onSubmit }) => {
             placeholder="password"
             secureTextEntry
           />
-          <Pressable style={styles.btnPrimary} onPress={handleSubmit}>
-            <Text
-              fontSize="subheading"
-              fontWeight="bold"
-              style={styles.btnPrimaryText}
-            >
-              Sign in
-            </Text>
-          </Pressable>
+          <ButtonPrimary text="Sign in" handlePress={handleSubmit} />
         </View>
       )}
     </Formik>
