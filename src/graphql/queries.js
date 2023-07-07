@@ -5,8 +5,16 @@ import {
 } from "./fragments";
 
 export const GET_REPOSITORIES = gql`
-  query ($orderBy: AllRepositoriesOrderBy, $orderDirection: OrderDirection) {
-    repositories(orderBy: $orderBy, orderDirection: $orderDirection) {
+  query (
+    $orderBy: AllRepositoriesOrderBy
+    $orderDirection: OrderDirection
+    $searchKeyword: String
+  ) {
+    repositories(
+      orderBy: $orderBy
+      orderDirection: $orderDirection
+      searchKeyword: $searchKeyword
+    ) {
       edges {
         node {
           ...RepositoryNodeFragment
@@ -41,6 +49,12 @@ export const CREATE_REVIEW = gql`
   }
 `;
 
+export const DELETE_REVIEW = gql`
+  mutation DeleteReview($deleteReviewId: ID!) {
+    deleteReview(id: $deleteReviewId)
+  }
+`;
+
 export const USER_SIGNIN = gql`
   mutation Authenticate($credentials: AuthenticateInput) {
     authenticate(credentials: $credentials) {
@@ -58,10 +72,25 @@ export const USER_SIGNUP = gql`
   }
 `;
 
-export const USER_SIGNOUT = gql`
-  query Me {
+export const GET_CURRENT_USER = gql`
+  query getCurrentUser($includeReviews: Boolean = false) {
     me {
       username
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            createdAt
+            rating
+            text
+            user {
+              id
+              username
+            }
+            id
+            repositoryId
+          }
+        }
+      }
     }
   }
 `;

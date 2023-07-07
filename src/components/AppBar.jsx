@@ -2,7 +2,7 @@ import { View, Pressable, StyleSheet, ScrollView } from "react-native";
 import { useNavigate } from "react-router-native";
 import { useQuery, useApolloClient } from "@apollo/client";
 import { useAuthStorage } from "../hooks/useAuthStorage";
-import { USER_SIGNOUT } from "../graphql/queries";
+import { GET_CURRENT_USER } from "../graphql/queries";
 import Text from "./Text";
 import Constants from "expo-constants";
 import theme from "../theme";
@@ -26,7 +26,7 @@ const AppBar = () => {
   const authStorage = useAuthStorage();
   const apolloClient = useApolloClient();
   const navigate = useNavigate();
-  const { data } = useQuery(USER_SIGNOUT);
+  const { data } = useQuery(GET_CURRENT_USER);
 
   const logOut = async () => {
     await authStorage.removeAccessToken();
@@ -46,6 +46,18 @@ const AppBar = () => {
             style={{ color: "white" }}
           >
             Create a review
+          </Text>
+        </Pressable>
+        <Pressable
+          style={styles.pressable}
+          onPress={() => navigate("/reviews")}
+        >
+          <Text
+            fontWeight="bold"
+            fontSize="subheading"
+            style={{ color: "white" }}
+          >
+            My reviews
           </Text>
         </Pressable>
         <Pressable style={styles.pressable} onPress={logOut}>

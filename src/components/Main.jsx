@@ -7,6 +7,7 @@ import AppBar from "./AppBar";
 import SignIn from "./SignIn";
 import SignUpForm from "./SignUpForm";
 import ReviewForm from "./ReviewForm";
+import ReviewList from "./ReviewList";
 
 import theme from "../theme";
 
@@ -29,6 +30,7 @@ const Main = () => {
         <Route path="/signin" element={<SignIn />} exact />
         <Route path="/signup" element={<SignUpForm />} exact />
         <Route path="/reviewform" element={<ReviewForm />} exact />
+        <Route path="/reviews" element={<ReviewList />} exact />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </View>

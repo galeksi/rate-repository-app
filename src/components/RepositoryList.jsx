@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalText: {
-    // marginBottom: 15,
     textAlign: "center",
     color: theme.colors.textSecondary,
     fontSize: 18,
@@ -58,12 +57,30 @@ const styles = StyleSheet.create({
   orderText: {
     fontSize: 18,
   },
+  searchContainer: {
+    height: 50,
+    marginHorizontal: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+    alignItems: "center",
+    flexDirection: "row",
+    alignSelf: "stretch",
+    backgroundColor: "white",
+  },
+  searchText: {
+    fontSize: 18,
+    flexGrow: 1,
+    textAlign: "left",
+  },
+  searchIcon: {
+    marginHorizontal: 10,
+  },
 });
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
 export const RepositoryList = () => {
-  const { data, loading, refetch } = useRepositories("CREATED_AT", "DESC");
+  const { data, loading, refetch } = useRepositories();
   const [order, setOrder] = useState("latest");
   const [modalVisible, setModalVisible] = useState(false);
   const navigate = useNavigate();
@@ -86,7 +103,6 @@ export const RepositoryList = () => {
     const queryVariables = {
       latest: {
         orderBy: "CREATED_AT",
-        orderDirection: "DESC",
       },
       highest: {
         orderBy: "RATING_AVERAGE",
@@ -160,15 +176,5 @@ export const RepositoryList = () => {
     />
   );
 };
-
-// const RepositoryList = () => {
-//   const { data, loading } = useRepositories();
-
-//   if (loading) {
-//     return <Text>Loading...</Text>;
-//   }
-
-//   return <RepositoryListContainer repositories={data.repositories} />;
-// };
 
 export default RepositoryList;
