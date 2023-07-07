@@ -26,18 +26,23 @@ const ReviewForm = () => {
 
   const submitReview = async (values) => {
     const { username, repository, review, rating } = values;
-    const response = await mutate({
-      variables: {
-        review: {
-          ownerName: username,
-          repositoryName: repository,
-          rating: Number(rating),
-          text: review,
-        },
-      },
-    });
 
-    navigate(`/${response.data.createReview.repositoryId}`);
+    try {
+      const response = await mutate({
+        variables: {
+          review: {
+            ownerName: username,
+            repositoryName: repository,
+            rating: Number(rating),
+            text: review,
+          },
+        },
+      });
+
+      navigate(`/${response.data.createReview.repositoryId}`);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

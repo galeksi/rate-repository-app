@@ -49,6 +49,15 @@ export const USER_SIGNIN = gql`
   }
 `;
 
+export const USER_SIGNUP = gql`
+  mutation CreateUser($user: CreateUserInput) {
+    createUser(user: $user) {
+      username
+      id
+    }
+  }
+`;
+
 export const USER_SIGNOUT = gql`
   query Me {
     me {
