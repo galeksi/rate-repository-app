@@ -52,7 +52,7 @@ const ReviewForm = () => {
       validationSchema={validationSchema}
     >
       {({ handleSubmit }) => (
-        <View>
+        <View style={{ backgroundColor: "white" }}>
           <FormikTextInput
             name="username"
             placeholder="Repository owner name"

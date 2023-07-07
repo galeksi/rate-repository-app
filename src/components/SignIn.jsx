@@ -24,7 +24,7 @@ export const SignInForm = ({ onSubmit }) => {
       validationSchema={validationSchema}
     >
       {({ handleSubmit }) => (
-        <View>
+        <View style={{ backgroundColor: "white" }}>
           <FormikTextInput name="username" placeholder="username" />
           <FormikTextInput
             name="password"

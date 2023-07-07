@@ -1,6 +1,5 @@
 import { Pressable } from "react-native";
 import { Link } from "react-router-native";
-// import theme from "../theme";
 import Text from "./Text";
 
 const AppBarItem = ({ link, name, styling }) => {
